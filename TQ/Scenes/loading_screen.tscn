@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnbmbgx8ggub6"]
+
+[sub_resource type="GDScript" id="GDScript_pg7fe"]
+resource_name = "LOADINGSCREEN"
+script/source = "extends Control
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	await get_tree().create_timer(5.0).timeout
+	
+	get_tree().change_scene_to_file(\"res://TQ/PrivateDevRoom/TQDev_Room.tscn\")
+	
+	pass # Replace with function body.
+
+"
+
+[node name="Loading_Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_pg7fe")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -11.5
+offset_right = 65.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "{Loading Screen}"

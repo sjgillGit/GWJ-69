@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bhx6mdglogjqk"]
 
-[ext_resource type="Texture2D" uid="uid://ct4n0owymt04g" path="res://TQ/Assets/EasterEgg/UncrackedEasterEgg.png" id="1_3gv5w"]
+[ext_resource type="Texture2D" uid="uid://ct4n0owymt04g" path="res://TQ/Assets/EasterEgg/UncrackedEasterEgg.png" id="1_yh55s"]
 
 [sub_resource type="Gradient" id="Gradient_48h88"]
 
@@ -41,7 +41,7 @@ noise = SubResource("FastNoiseLite_ovauv")
 [node name="Egg" type="Sprite2D"]
 modulate = Color(1, 1, 1, 0.270588)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_3gv5w")
+texture = ExtResource("1_yh55s")
 
 [node name="Button" type="Button" parent="."]
 offset_left = -268.0

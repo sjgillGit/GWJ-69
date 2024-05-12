@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3k4mr8b2opaa"]
+
+[ext_resource type="Script" path="res://Pentixel/customer/customer.gd" id="1_46eyc"]
+[ext_resource type="Texture2D" uid="uid://bdb5mly762mwq" path="res://TQ/Assets/Customer_suff/Customer_A.png" id="1_w7tqs"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1v5bj"]
+
+[node name="Customer" type="PathFollow3D"]
+use_model_front = true
+loop = false
+script = ExtResource("1_46eyc")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, 0, 0.8, 0)
+texture = ExtResource("1_w7tqs")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+target_position = Vector3(0, 0, 2)
+collision_mask = 2
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_1v5bj")
+
+[node name="DebugTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DebugTimer" to="." method="_on_debug_timer_timeout"]

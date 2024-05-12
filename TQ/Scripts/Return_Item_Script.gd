@@ -14,7 +14,7 @@ class_name Shopping_Items
 }
 
 
-@export var DESCRIPTION: String
+@export_multiline var DESCRIPTION
 
 func _ready():
 	ItemLib.Item_Name = ITEMNAME

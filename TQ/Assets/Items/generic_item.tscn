@@ -13,7 +13,8 @@ size = Vector3(0.25, 0.25, 1)
 [node name="Generic_Item" type="Node3D"]
 script = ExtResource("1_rfso3")
 ITEMNAME = "Generic Item"
-DESCRIPTION = "Just a generic peice of shit (ノಠ益ಠ)ノ彡┻━┻"
+DESCRIPTION = "Just a generic peice of shit 
+(ノಠ益ಠ)ノ彡┻━┻"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false

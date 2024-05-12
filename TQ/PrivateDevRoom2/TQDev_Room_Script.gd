@@ -7,14 +7,14 @@ extends Node3D
 
 var customer_line = []
 
+var customer_p = preload("res://TQ/Assets/customer.tscn")
+var customer_i = customer_p.instantiate()
 
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	
 	#customer spawning
-	var customer_p = preload("res://TQ/Assets/customer.tscn")
-	var customer_i = customer_p.instantiate()
 	
 	$CustomerWaitLine.add_child(customer_i)
 	customer_line.append(customer_i)
@@ -24,6 +24,7 @@ func _ready():
 	#item sheet reading
 	#var file = FileAccess.open("res://example.csv", FileAccess.READ)
 	#
+	#await get_tree().create_timer(2.0).timeout
 	left_Side.connect("mouse_entered", warranty_list_up)
 	left_Side.connect('mouse_exited', warranty_list_down)
 	
@@ -49,18 +50,22 @@ func _process(delta):
 	#customer_i.transform.origin = move_toward(player.global_position, 0.5)
 	$CustomerWaitLine/Customer/Sprite3D.look_at(player.global_position)
 	$CustomerWaitLine/Customer.progress += 0.03
+	
+	
+	if customer_i.progress == 100:
+		customer_i.progress = customer_i.progress
 	pass
 
 func warranty_list_up():
 	#print("warranty info")
 	if left_Side.mouse_entered:
 		$WarrantyList/AnimationPlayer.play("Observe")
-	
+		print('mouse entered')
 	pass
 
 func warranty_list_down():
 	if left_Side.mouse_exited:
 		$WarrantyList/AnimationPlayer.play_backwards("Observe")
-		#print('mouse left')
+		print('mouse left')
 	
 	pass

@@ -17,7 +17,8 @@ func _ready():
 	pass # Replace with function body.
 
 func start_game():
-	get_tree().change_scene_to_file("res://TQ/Scenes/loading_screen.tscn")
+	var load_P = load("res://TQ/Scenes/loading_screen.tscn")
+	get_tree().change_scene_to_packed(load_P)
 	
 	pass
 

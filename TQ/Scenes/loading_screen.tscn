@@ -6,7 +6,7 @@
 resource_name = "LOADINGSCREEN"
 script/source = "extends Control
 
-var lvl_p = load(\"res://TQ/PrivateDevRoom/TQDev_Room.tscn\")
+var lvl_p = preload(\"res://TQ/PrivateDevRoom2/TQDev_Room.tscn\")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

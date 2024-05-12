@@ -234,8 +234,8 @@ material = SubResource("StandardMaterial3D_kf6x0")
 [node name="PC" parent="." instance=ExtResource("2_f8btx")]
 transform = Transform3D(-0.0441774, 0, 0.999024, 0, 1, 0, -0.999024, 0, -0.0441774, 59.5725, 0.731448, 1.16085)
 
-[node name="PC_Cam" parent="PC/Control/SubViewportContainer/SubViewport" index="0"]
-transform = Transform3D(0.0151354, -0.197607, 0.980165, 0.000777961, 0.980279, 0.197618, -0.999885, -0.0022285, 0.0149907, 58.8576, 0.975679, 1.36941)
+[node name="SubViewport" parent="PC/Control/SubViewportContainer" index="0"]
+transparent_bg = true
 
 [node name="BouncyBall" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 3.3, 0)
@@ -419,7 +419,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47858, 0)
 curve = SubResource("Curve3D_sft8n")
 
 [node name="Customer" parent="CustomerWaitLine" instance=ExtResource("6_kevnk")]
-transform = Transform3D(0.999981, 7.66188e-06, 0.00566957, -9.09492e-13, 0.999999, -0.0013514, -0.00566956, 0.00135138, 0.999983, 44.8268, -1.61083, 9.17694)
+transform = Transform3D(0.99998, 7.66188e-06, 0.00566957, -9.09492e-13, 0.999999, -0.0013514, -0.00566955, 0.00135138, 0.999983, 44.8268, -1.61083, 9.17694)
 
 [node name="WarrantyList" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.8407, 0.115794, 1.63518)

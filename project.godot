@@ -15,6 +15,10 @@ run/main_scene="res://TQ/Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://TQ/icon.svg"
 
+[autoload]
+
+PcScores="*res://TQ/Scripts/PC_Scores.gd"
+
 [input]
 
 Esc={

@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxhxgrt7tvdyu"]
+[gd_scene load_steps=4 format=3 uid="uid://bxhxgrt7tvdyu"]
 
 [ext_resource type="Script" path="res://TQ/Scripts/MainMenu_Script.gd" id="1_k04em"]
+[ext_resource type="PackedScene" uid="uid://bhx6mdglogjqk" path="res://TQ/Assets/EasterEgg/EasterEgg.tscn" id="2_v5gor"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_atfue"]
+bg_color = Color(0.188515, 0.239588, 0.0745873, 1)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -29,3 +33,14 @@ text = "credits"
 [node name="Quit" type="Button" parent="Menu_Buttons"]
 layout_mode = 2
 text = "quit"
+
+[node name="credits_Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 677.0
+offset_top = -30.0
+offset_right = 1177.0
+offset_bottom = 670.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_atfue")
+
+[node name="Sprite2D" parent="credits_Panel" instance=ExtResource("2_v5gor")]
+position = Vector2(76, 620)

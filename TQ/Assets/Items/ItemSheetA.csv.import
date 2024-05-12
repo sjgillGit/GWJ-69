@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b4d3f057u1a40"
+
+[deps]
+
+files=["res://TQ/Assets/Items/ItemSheetA.Item Decription.translation"]
+
+source_file="res://TQ/Assets/Items/ItemSheetA.csv"
+dest_files=["res://TQ/Assets/Items/ItemSheetA.Item Decription.translation"]
+
+[params]
+
+compress=true
+delimiter=0

@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnbmbgx8ggub6"]
+[gd_scene load_steps=3 format=3 uid="uid://cnbmbgx8ggub6"]
+
+[ext_resource type="PackedScene" uid="uid://bhx6mdglogjqk" path="res://TQ/Assets/EasterEgg/EasterEgg.tscn" id="1_hvg2e"]
 
 [sub_resource type="GDScript" id="GDScript_pg7fe"]
 resource_name = "LOADINGSCREEN"
@@ -7,12 +9,28 @@ script/source = "extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Sprite2D/Button.connect('pressed', add_easter_egg)
+	
+	
 	await get_tree().create_timer(5.0).timeout
 	
 	get_tree().change_scene_to_file(\"res://TQ/PrivateDevRoom/TQDev_Room.tscn\")
 	
 	pass # Replace with function body.
 
+
+
+func add_easter_egg():
+	PcScores.easter_eggs_in_basket += 1
+	print(str(PcScores.easter_eggs_in_basket))
+	
+	if PcScores.easter_eggs_in_basket < 50:
+		$Sprite2D/sparkle.restart()
+	
+	if PcScores.easter_eggs_in_basket >= 50:
+		$Sprite2D.texture = load(\"res://TQ/Assets/EasterEgg/CrackedEasterEgg.png\")
+		print('hatched the easter egg!')
+	pass
 "
 
 [node name="Loading_Screen" type="Control"]
@@ -38,3 +56,6 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "{Loading Screen}"
+
+[node name="Sprite2D" parent="." instance=ExtResource("1_hvg2e")]
+position = Vector2(81, 575)

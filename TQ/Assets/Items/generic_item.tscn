@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckwwquldv8e0d"]
+
+[ext_resource type="Script" path="res://TQ/Scripts/Return_Item_Script.gd" id="1_rfso3"]
+[ext_resource type="PackedScene" uid="uid://b40f5nj5q35uf" path="res://Mike3D/assets_1/Phone.glb" id="2_dxg2u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kkgbs"]
+albedo_color = Color(0, 0.596078, 0.25098, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_vk5go"]
+material = SubResource("StandardMaterial3D_kkgbs")
+size = Vector3(0.25, 0.25, 1)
+
+[node name="Generic_Item" type="Node3D"]
+script = ExtResource("1_rfso3")
+ITEMNAME = "Generic Item"
+DESCRIPTION = "Just a generic peice of shit (ノಠ益ಠ)ノ彡┻━┻"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("PrismMesh_vk5go")
+
+[node name="Phone" parent="." instance=ExtResource("2_dxg2u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00834304, 0, 0.0181109)
+
+[node name="RecalcTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[editable path="Phone"]

@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://dghges4yi0cvt"]
+
+[sub_resource type="GDScript" id="GDScript_3ci17"]
+resource_name = "PATHFOLLOW"
+script/source = "extends Node3D
+
+
+func _process(delta):
+	$Thingy.rotate_y(0.05)
+	
+	$Path3D/PathFollow3D.progress += 0.01
+	$Path3D/PathFollow3D/Camera3D.look_at($Thingy.global_position)
+	pass
+"
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j2mxm"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_c603r"]
+sky_material = SubResource("ProceduralSkyMaterial_j2mxm")
+
+[sub_resource type="Environment" id="Environment_br7ib"]
+background_mode = 2
+sky = SubResource("Sky_c603r")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Curve3D" id="Curve3D_0j6dh"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.0908639, 1.05981, -7.35261, 0, 0, 0, 0, 0, 0, 0.162995, -1.22217, 8.39841, 0, 0, 0, 0, 0, 0, -5.94565, -0.753144, 13.5425, 0, 0, 0, 0, 0, 0, -11.6417, 1.48374, 5.64103, 0, 0, 0, 0, 0, 0, -7.69812, 3.91637, 0.807125, 0, 0, 0, 0, 0, 0, -0.0908639, 1.05981, -7.35261),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="PrismMesh" id="PrismMesh_fttle"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1q1i4"]
+size = Vector2(1000, 1000)
+
+[node name="PathFollow" type="Node3D"]
+script = SubResource("GDScript_3ci17")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_br7ib")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_0j6dh")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.99987, 0.00231028, -0.0159484, 4.65661e-10, 0.98967, 0.143363, 0.0161149, 0.143345, -0.989542, -0.0908639, 1.05981, -7.35261)
+
+[node name="Camera3D" type="Camera3D" parent="Path3D/PathFollow3D"]
+current = true
+
+[node name="Thingy" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.29625, 0, 2.59782)
+mesh = SubResource("PrismMesh_fttle")
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.40211, 0)
+mesh = SubResource("PlaneMesh_1q1i4")

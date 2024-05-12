@@ -1,6 +1,63 @@
-[gd_scene format=3 uid="uid://mbvdbwucuyat"]
+[gd_scene load_steps=3 format=3 uid="uid://mbvdbwucuyat"]
+
+[ext_resource type="Texture2D" uid="uid://b88vvojrug3af" path="res://TQ/Assets/Buttons/ButtonTxt.png" id="1_ocrs3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u1nwk"]
+size = Vector2(500, 700)
 
 [node name="PC" type="Node3D"]
 
-[node name="PC_Cam" type="Camera3D" parent="."]
-transform = Transform3D(0.999994, 0, -0.00338594, 0, 1, 0, 0.00338594, 0, 0.999994, 0, 0, 0)
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="PC_Cam" type="Camera3D" parent="Control/SubViewportContainer/SubViewport"]
+transform = Transform3D(0.999994, 0, -0.00338594, 0, 1, 0, 0.00338594, 0, 0.999994, 0, 0.975679, 0)
+current = true
+
+[node name="WarrantyArea" type="Area2D" parent="Control"]
+position = Vector2(271, 422)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/WarrantyArea"]
+position = Vector2(-49, -96)
+shape = SubResource("RectangleShape2D_u1nwk")
+
+[node name="ReImburse" type="Button" parent="Control"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 0
+offset_left = 701.0
+offset_top = 522.0
+offset_right = 1221.0
+offset_bottom = 1042.0
+scale = Vector2(0.290245, 0.290245)
+icon = ExtResource("1_ocrs3")
+flat = true
+
+[node name="VOID" type="Button" parent="Control"]
+modulate = Color(0.984314, 0, 0, 1)
+layout_mode = 0
+offset_left = 448.0
+offset_top = 522.0
+offset_right = 968.0
+offset_bottom = 1042.0
+scale = Vector2(0.283848, 0.283848)
+icon = ExtResource("1_ocrs3")
+flat = true

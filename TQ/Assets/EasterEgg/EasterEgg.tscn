@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhx6mdglogjqk"]
+[gd_scene load_steps=11 format=3 uid="uid://bhx6mdglogjqk"]
 
 [ext_resource type="Texture2D" uid="uid://ct4n0owymt04g" path="res://TQ/Assets/EasterEgg/UncrackedEasterEgg.png" id="1_3gv5w"]
 
@@ -6,6 +6,37 @@
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_lvec6"]
 gradient = SubResource("Gradient_48h88")
+
+[sub_resource type="Gradient" id="Gradient_dx27o"]
+offsets = PackedFloat32Array(0, 0.879121, 1)
+colors = PackedColorArray(0.388028, 0.808221, 1, 1, 0.778979, 0, 0.35555, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jgjy5"]
+gradient = SubResource("Gradient_dx27o")
+
+[sub_resource type="Curve" id="Curve_6q2c6"]
+_data = [Vector2(0, 0.018868), 0.0, 0.0, 0, 0, Vector2(0.513636, 0.215094), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_bp2l1"]
+curve = SubResource("Curve_6q2c6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_htbiu"]
+particle_flag_disable_z = true
+angle_min = -90.0
+angle_max = 90.0
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 98, 0)
+scale_curve = SubResource("CurveTexture_bp2l1")
+color_ramp = SubResource("GradientTexture1D_jgjy5")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ovauv"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dwikm"]
+seamless = true
+noise = SubResource("FastNoiseLite_ovauv")
 
 [node name="Egg" type="Sprite2D"]
 modulate = Color(1, 1, 1, 0.270588)
@@ -18,3 +49,10 @@ offset_top = -232.0
 offset_right = 232.0
 offset_bottom = 268.0
 icon = SubResource("GradientTexture1D_lvec6")
+flat = true
+
+[node name="sparkle" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_htbiu")
+texture = SubResource("NoiseTexture2D_dwikm")
+one_shot = true

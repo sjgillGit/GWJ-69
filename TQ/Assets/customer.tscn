@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bdb5mly762mwq" path="res://TQ/Assets/Customer_suff/Customer_A.png" id="1_0m4j3"]
 
-[node name="Customer" type="Node3D"]
+[node name="Customer" type="PathFollow3D"]
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.793934, 0)

@@ -13,6 +13,7 @@ func _ready():
 	#easter egg 
 	$credits_Panel/Sprite2D/Button.connect('pressed', add_easter_egg)
 	
+	
 	pass # Replace with function body.
 
 func start_game():
@@ -42,4 +43,11 @@ func toggle_Credits_Menu():
 func add_easter_egg():
 	PcScores.easter_eggs_in_basket += 1
 	print(str(PcScores.easter_eggs_in_basket))
+	
+	if PcScores.easter_eggs_in_basket < 50:
+		$credits_Panel/Sprite2D/sparkle.restart()
+	
+	if PcScores.easter_eggs_in_basket >= 50:
+		$credits_Panel/Sprite2D.texture = load("res://TQ/Assets/EasterEgg/CrackedEasterEgg.png")
+		print('hatched the easter egg!')
 	pass

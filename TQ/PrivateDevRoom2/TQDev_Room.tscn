@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://bkl0fn657whnu"]
 
-[ext_resource type="Script" path="res://TQ/PrivateDevRoom/TQDev_Room_Script.gd" id="1_365yj"]
+[ext_resource type="Script" path="res://TQ/PrivateDevRoom2/TQDev_Room_Script.gd" id="1_365yj"]
 [ext_resource type="ArrayMesh" uid="uid://cchauoog7me2v" path="res://TQ/Assets/ShelfA.obj" id="1_rf7w4"]
 [ext_resource type="PackedScene" uid="uid://mbvdbwucuyat" path="res://TQ/Assets/PC/pc.tscn" id="2_f8btx"]
 [ext_resource type="Texture2D" uid="uid://bdb5mly762mwq" path="res://TQ/Assets/Customer_suff/Customer_A.png" id="3_i2nw8"]
@@ -419,7 +419,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47858, 0)
 curve = SubResource("Curve3D_sft8n")
 
 [node name="Customer" parent="CustomerWaitLine" instance=ExtResource("6_kevnk")]
-transform = Transform3D(0.999981, 7.65928e-06, 0.00566839, 4.54746e-13, 0.999999, -0.00135122, -0.00566838, 0.0013512, 0.999983, 44.8268, -1.61083, 9.17694)
+transform = Transform3D(0.999981, 7.66188e-06, 0.00566957, -9.09492e-13, 0.999999, -0.0013514, -0.00566956, 0.00135138, 0.999983, 44.8268, -1.61083, 9.17694)
 
 [node name="WarrantyList" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.8407, 0.115794, 1.63518)

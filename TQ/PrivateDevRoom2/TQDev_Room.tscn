@@ -1,12 +1,18 @@
-[gd_scene load_steps=30 format=3 uid="uid://bkl0fn657whnu"]
+[gd_scene load_steps=39 format=3 uid="uid://bkl0fn657whnu"]
 
 [ext_resource type="Script" path="res://TQ/PrivateDevRoom2/TQDev_Room_Script.gd" id="1_365yj"]
 [ext_resource type="ArrayMesh" uid="uid://cchauoog7me2v" path="res://TQ/Assets/ShelfA.obj" id="1_rf7w4"]
 [ext_resource type="PackedScene" uid="uid://mbvdbwucuyat" path="res://TQ/Assets/PC/pc.tscn" id="2_f8btx"]
+[ext_resource type="Texture2D" uid="uid://tx04oog8vsw0" path="res://TQ/Materials/Textures/OfficeCeiling005_1K-JPG_Color.jpg" id="2_y7teb"]
+[ext_resource type="Texture2D" uid="uid://drmdma40cleft" path="res://TQ/Materials/Textures/OfficeCeiling005_1K-JPG_Emission.jpg" id="3_3gsn4"]
 [ext_resource type="Texture2D" uid="uid://bdb5mly762mwq" path="res://TQ/Assets/Customer_suff/Customer_A.png" id="3_i2nw8"]
+[ext_resource type="Texture2D" uid="uid://cqcuijaqeellt" path="res://TQ/Materials/Textures/OfficeCeiling005_1K-JPG_Displacement.jpg" id="4_h5v7n"]
 [ext_resource type="ArrayMesh" uid="uid://dh25f4axekegf" path="res://TQ/Assets/Cart_A.obj" id="5_c3b5d"]
+[ext_resource type="Texture2D" uid="uid://7at531rvuym0" path="res://TQ/Materials/Textures/OfficeCeiling005_1K-JPG_Metalness.jpg" id="5_oc6ss"]
+[ext_resource type="Texture2D" uid="uid://cojeh8cdyk3bg" path="res://TQ/Materials/Textures/OfficeCeiling005_1K-JPG_NormalDX.jpg" id="6_3ayd7"]
 [ext_resource type="PackedScene" uid="uid://c0m1551h2hoo8" path="res://TQ/Assets/customer.tscn" id="6_kevnk"]
 [ext_resource type="PackedScene" uid="uid://ckwwquldv8e0d" path="res://TQ/Assets/Items/generic_item.tscn" id="7_xwcjd"]
+[ext_resource type="PackedScene" uid="uid://b0m16qo1rl4lk" path="res://Mike3D/assets_3/Table.glb" id="8_iwuf2"]
 
 [sub_resource type="Gradient" id="Gradient_suvt6"]
 offsets = PackedFloat32Array(0.417722, 1)
@@ -31,6 +37,9 @@ sky_material = SubResource("ProceduralSkyMaterial_x4nnn")
 [sub_resource type="Environment" id="Environment_jwwhw"]
 background_mode = 2
 sky = SubResource("Sky_thr6t")
+ambient_light_source = 2
+ambient_light_color = Color(0.739123, 0.695682, 0.642738, 1)
+ambient_light_energy = 0.55
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cs465"]
 albedo_color = Color(0.431373, 0.415686, 1, 1)
@@ -45,6 +54,25 @@ noise = SubResource("FastNoiseLite_jku2w")
 albedo_color = Color(0.431373, 0.415686, 1, 1)
 albedo_texture = SubResource("NoiseTexture2D_45pqy")
 uv1_scale = Vector3(110, 110, 110)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vkshl"]
+albedo_texture = ExtResource("2_y7teb")
+metallic = 1.0
+metallic_texture = ExtResource("5_oc6ss")
+emission_enabled = true
+emission_energy_multiplier = 115.5
+emission_texture = ExtResource("3_3gsn4")
+normal_enabled = true
+normal_texture = ExtResource("6_3ayd7")
+heightmap_enabled = true
+heightmap_scale = -3.0
+heightmap_flip_tangent = true
+heightmap_texture = ExtResource("4_h5v7n")
+uv1_scale = Vector3(25, 25, 25)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jm54k"]
+material = SubResource("StandardMaterial3D_vkshl")
+size = Vector2(1000, 1000)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_seey1"]
 bounce = 0.85
@@ -62,6 +90,9 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
 point_count = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tp4f6"]
+albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_td87h"]
 size = Vector2(0.5, 0.5)
@@ -155,7 +186,7 @@ _data = {
 "RESET": SubResource("Animation_fynwm")
 }
 
-[node name="TqDevRoom" type="Node3D"]
+[node name="TqDevRoom2" type="Node3D"]
 script = ExtResource("1_365yj")
 
 [node name="Lighting" type="Node" parent="."]
@@ -166,6 +197,7 @@ environment = SubResource("Environment_jwwhw")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
 transform = Transform3D(1, 0, 0, 0, 0.503442, 0.864029, 0, -0.864029, 0.503442, 0, 5.3308, 0)
 light_color = Color(0.499178, 0.422885, 0.564387, 1)
+light_energy = 1.056
 shadow_enabled = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lighting"]
@@ -209,14 +241,17 @@ omni_attenuation = 0.112656
 
 [node name="Desk" type="CSGBox3D" parent="Geometry"]
 transform = Transform3D(0.61358, 0, 0, 0, 0.61358, 0, 0, 0, 0.61358, 57.8338, -0.19921, 1.12275)
+visible = false
 size = Vector3(1, 1, 4.3833)
 
 [node name="Shelf" type="CSGBox3D" parent="Geometry"]
 transform = Transform3D(-0.023233, 0, -0.61314, 0, 0.61358, 0, 0.61314, 0, -0.023233, 59.6783, 0.455566, 2.8462)
+visible = false
 size = Vector3(1, 3.13428, 7.03931)
 
 [node name="Shelf2" type="CSGBox3D" parent="Geometry"]
 transform = Transform3D(-0.023233, 0, -0.61314, 0, 0.61358, 0, 0.61314, 0, -0.023233, 59.6783, 0.455566, -0.237273)
+visible = false
 size = Vector3(1, 3.13428, 7.03931)
 
 [node name="Walls" type="CSGBox3D" parent="Geometry"]
@@ -231,11 +266,18 @@ operation = 2
 size = Vector3(150, 23.7257, 150)
 material = SubResource("StandardMaterial3D_kf6x0")
 
+[node name="Roof" type="MeshInstance3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 5.32574, -1.52465e-07)
+mesh = SubResource("PlaneMesh_jm54k")
+
 [node name="PC" parent="." instance=ExtResource("2_f8btx")]
 transform = Transform3D(-0.0441774, 0, 0.999024, 0, 1, 0, -0.999024, 0, -0.0441774, 59.5725, 0.731448, 1.16085)
 
 [node name="SubViewport" parent="PC/Control/SubViewportContainer" index="0"]
 transparent_bg = true
+
+[node name="PC_Cam" parent="PC" index="1"]
+transform = Transform3D(0.999994, -0.000778303, -0.00329527, 0.000939028, 0.998796, 0.0490571, 0.00325312, -0.0490599, 0.99879, -0.104482, 0.350905, -0.524681)
 
 [node name="BouncyBall" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 3.3, 0)
@@ -405,21 +447,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.0143, 1.19846, 1.22159)
 
 [node name="CustomerSpawn" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.9613, -0.506, 9.19001)
+visible = false
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-0.00526006, 0, 0.164094, 0, 0.164178, 0, -0.164094, 0, -0.00526006, 56.5499, 0.487972, 1.20309)
+visible = false
 texture = ExtResource("3_i2nw8")
 
 [node name="CartA" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.694889, 0, 0, 0, 0.694889, 0, 0, 0, 0.694889, 54.4055, 0.151069, 2.41881)
+transform = Transform3D(0.492876, 0, 0.48984, 0, 0.694889, 0, -0.48984, 0, 0.492876, 50.0161, 0.151069, 7.10115)
 mesh = ExtResource("5_c3b5d")
 
 [node name="CustomerWaitLine" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47858, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.79271, 2.15751, 2.75019)
 curve = SubResource("Curve3D_sft8n")
 
 [node name="Customer" parent="CustomerWaitLine" instance=ExtResource("6_kevnk")]
-transform = Transform3D(0.99998, 7.66188e-06, 0.00566957, -9.09492e-13, 0.999999, -0.0013514, -0.00566955, 0.00135138, 0.999983, 44.8268, -1.61083, 9.17694)
+transform = Transform3D(0.993802, -0.11077, -0.00682175, 0.110796, 0.993833, 0.00386771, 0.00635114, -0.00459964, 0.999969, 56.868, -1.74905, 1.22049)
+visible = false
+progress = 63.08
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="CustomerWaitLine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40815, -1.56146, 0)
+polygon = PackedVector2Array(0, 0, 0.013787, 0.14125, 0.297082, 0.129983, 0.296647, -0.0144024)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_tp4f6")
 
 [node name="WarrantyList" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.8407, 0.115794, 1.63518)
@@ -459,6 +520,12 @@ wait_time = 3.0
 autostart = true
 
 [node name="Generic_Item" parent="." instance=ExtResource("7_xwcjd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.8898, 0.31235, 1.17389)
+transform = Transform3D(1, 0, 0, 0, 0.176569, 0.984288, 0, -0.984288, 0.176569, 57.8898, 0.416503, 1.19257)
+
+[node name="Table" parent="." instance=ExtResource("8_iwuf2")]
+transform = Transform3D(0.0102408, 0, 0.644728, 0, 0.644809, 0, -0.644728, 0, 0.0102408, 57.9377, -0.60358, 1.34296)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
 
 [editable path="PC"]

@@ -7,11 +7,16 @@ extends Node3D
 
 var customer_line = []
 
-var customer_p = preload("res://TQ/Assets/customer.tscn")
+var customer_p = load("res://TQ/Assets/customer.tscn")
 var customer_i = customer_p.instantiate()
 
+var spawn_time = randf_range(4, 8)
 
 func _ready():
+	$SpawnTimer.wait_time = spawn_time
+	$SpawnTimer.connect("timeout", spawn_customer)
+	#print(str($SpawnTimer.time_left))
+	
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	
 	#customer spawning
@@ -28,15 +33,13 @@ func _ready():
 	left_Side.connect("mouse_entered", warranty_list_up)
 	left_Side.connect('mouse_exited', warranty_list_down)
 	
-	#
-	#while !file.eof_reached():
-		#var csv_data := file.get_csv_line()
-		## process csv data - for example just print it
-		#print("CSV data is %s" % ", ".join(csv_data))
+	#player location
+	Globals.PC_Location = player.transform.origin
 	pass
 
 
 func _input(event):
+	
 	if Input.is_action_just_pressed("Esc"):
 		get_tree().quit()
 	
@@ -47,25 +50,41 @@ func _input(event):
 
 
 func _process(delta):
+	print(str($SpawnTimer.time_left))
+	
+	
 	#customer_i.transform.origin = move_toward(player.global_position, 0.5)
 	$CustomerWaitLine/Customer/Sprite3D.look_at(player.global_position)
-	$CustomerWaitLine/Customer.progress += 0.03
+	#$CustomerWaitLine/Customer.progress += 0.03
 	
 	
-	if customer_i.progress == 100:
-		customer_i.progress = customer_i.progress
+	#if customer_i.progress == 100:
+		#customer_i.progress = 100
+		
+	if $SpawnTimer.timeout:
+		$SpawnTimer.wait_time = spawn_time
+		$CustomerWaitLine.add_child(customer_i)
+		
 	pass
 
 func warranty_list_up():
-	#print("warranty info")
+	
 	if left_Side.mouse_entered:
 		$WarrantyList/AnimationPlayer.play("Observe")
 		print('mouse entered')
+	
 	pass
 
 func warranty_list_down():
+	
 	if left_Side.mouse_exited:
 		$WarrantyList/AnimationPlayer.play_backwards("Observe")
 		print('mouse left')
 	
+	pass
+
+func spawn_customer():
+	$CustomerWaitLine.add_child(customer_i)
+	customer_line.append(customer_i)
+	customer_i.transform.origin = $CustomerSpawn.global_position
 	pass

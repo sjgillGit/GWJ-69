@@ -1,8 +1,36 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0m1551h2hoo8"]
+[gd_scene load_steps=3 format=3 uid="uid://c0m1551h2hoo8"]
 
 [ext_resource type="Texture2D" uid="uid://bdb5mly762mwq" path="res://TQ/Assets/Customer_suff/Customer_A.png" id="1_0m4j3"]
 
+[sub_resource type="GDScript" id="GDScript_huo8q"]
+script/source = "extends PathFollow3D
+
+func _ready():
+	Globals.customers_in_line.append(0)
+	pass
+
+func _process(delta):
+	
+	if progress != 61:
+		progress += 0.05
+	else:
+		progress = 61
+	
+	pass
+
+func match_place_in_line():
+	match Globals.customers_in_line:
+		0:
+			print('wtf')
+		1:
+			print(\"oof\")
+		2:
+			print('what')
+	pass
+"
+
 [node name="Customer" type="PathFollow3D"]
+script = SubResource("GDScript_huo8q")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.793934, 0)

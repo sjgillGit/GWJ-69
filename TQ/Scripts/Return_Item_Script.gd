@@ -16,7 +16,11 @@ class_name Shopping_Items
 
 @export_multiline var DESCRIPTION
 
+@export var ITEM_ID: int = 0
+
 func _ready():
+	match_item_id()
+	
 	ItemLib.Item_Name = ITEMNAME
 	ItemLib.Item_Description = DESCRIPTION
 	
@@ -28,10 +32,20 @@ func _ready():
 
 
 func _process(delta):
-	rotate_z(0.01)
+	rotate_y(0.01)
 	pass
 
 func update_list():
+	
 	ItemLib.Item_Name = ITEMNAME
 	ItemLib.Item_Description = DESCRIPTION
+	
+	pass
+
+
+func match_item_id():
+	match ITEM_ID:
+		0:
+			ItemLib.ITEMLIST[0]
+			print(str(ITEM_ID))
 	pass

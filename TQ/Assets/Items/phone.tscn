@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://clb3kj3umas73"]
+
+[ext_resource type="Script" path="res://TQ/Scripts/Return_Item_Script.gd" id="1_82rfx"]
+[ext_resource type="PackedScene" uid="uid://b40f5nj5q35uf" path="res://Mike3D/assets_1/Phone.glb" id="2_qnjj0"]
+
+[node name="Phone" type="Node3D"]
+script = ExtResource("1_82rfx")
+
+[node name="Phone" parent="." instance=ExtResource("2_qnjj0")]

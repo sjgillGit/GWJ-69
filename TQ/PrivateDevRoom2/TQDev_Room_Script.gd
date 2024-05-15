@@ -12,6 +12,10 @@ var customer_i = customer_p.instantiate()
 
 var spawn_time = randf_range(4, 8)
 
+
+
+
+
 func _ready():
 	$SpawnTimer.wait_time = spawn_time
 	$SpawnTimer.connect("timeout", spawn_customer)
@@ -35,6 +39,18 @@ func _ready():
 	
 	#player location
 	Globals.PC_Location = player.transform.origin
+	
+	#var chosen = randi_range(0, ItemLib.ITEM_LIBRARY.size())
+	
+	
+	var spawn_p = load
+	var spawn_i = ItemLib.ITEM_LIBRARY[0].instantiate()
+	
+	$ItemSpawnPoint.add_child(spawn_i)
+	
+	#spawn_p.transform.origin = $ItemSpawnPoint.global_position
+	
+	
 	pass
 
 
@@ -46,6 +62,8 @@ func _input(event):
 	if Input.is_action_just_pressed("Dev_Button"):
 		print(str(customer_line[0]))
 		pass
+	
+	
 	pass
 
 
@@ -84,7 +102,8 @@ func warranty_list_down():
 	pass
 
 func spawn_customer():
-	$CustomerWaitLine.add_child(customer_i)
-	customer_line.append(customer_i)
-	customer_i.transform.origin = $CustomerSpawn.global_position
+	if customer_line.size() <= 5:
+		$CustomerWaitLine.add_child(customer_i)
+		customer_line.append(customer_i)
+		customer_i.transform.origin = $CustomerSpawn.global_position
 	pass

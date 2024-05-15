@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cojq2llw7ai37"]
+
+[ext_resource type="Script" path="res://TQ/Scripts/Return_Item_Script.gd" id="1_5hfur"]
+[ext_resource type="PackedScene" uid="uid://cv44y43hoo4a2" path="res://Mike3D/assets_1/Brick phone.glb" id="2_rnke8"]
+
+[node name="Brick_Phone" type="Node3D"]
+script = ExtResource("1_5hfur")
+
+[node name="Brick phone" parent="." instance=ExtResource("2_rnke8")]

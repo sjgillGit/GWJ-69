@@ -1,17 +1,17 @@
 extends Node
 
-
 func read_csv_data():
+	# Reads the data
 	var file = FileAccess.open("res://TQ/Assets/Items/ItemSheetA.csv",FileAccess.READ)
 	var main_data = {}
-	var true_data = []
 	var formated_data = {}
 	while !file.eof_reached():
 		var data_set = Array(file.get_csv_line())
 		main_data[main_data.size()] = data_set
 	file.close()
-	main_data.erase(main_data.size()-1)
 	
+	# Formats the data into objects
+	main_data.erase(main_data.size()-1)
 	var headers = main_data[0]
 	for row_index in main_data:
 		var base_obj = {}
@@ -21,9 +21,6 @@ func read_csv_data():
 				base_obj.size()
 				base_obj.merge({headers[colom_index]:data_index})
 				colom_index+=1
-			true_data.append(base_obj)
-			
-	for item in true_data:
-		
-		formated_data.merge({int(item["Item_ID"]):item})
+			formated_data.merge({int(base_obj["Item_ID"]):base_obj})
+	
 	return formated_data

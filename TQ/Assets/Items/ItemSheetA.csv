@@ -1,2 +1,5 @@
-ITEM_NAME,Item Decription
-Generic_Item,Just plain basic
+ITEM_NAME,Item Decription,Fault,Item_ID
+Generic_Item,Just plain basic,Broken thing,0
+Generic_Item1,Just plain basic1,Broken thing1,1
+Generic_Item2,Just plain basic2,Broken thing2,2
+Generic_Item3,Just plain basic3,Broken thing3,3

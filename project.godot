@@ -20,6 +20,7 @@ config/icon="res://TQ/icon.svg"
 PcScores="*res://TQ/Scripts/PC_Scores.gd"
 ItemLib="*res://TQ/Scripts/ItemLib.gd"
 Globals="*res://TQ/Scripts/globals.gd"
+CsvReader="*res://Iceofspade/csv_reader.gd"
 
 [input]
 

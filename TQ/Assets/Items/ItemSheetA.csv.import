@@ -6,10 +6,10 @@ uid="uid://b4d3f057u1a40"
 
 [deps]
 
-files=["res://TQ/Assets/Items/ItemSheetA.Item Decription.translation"]
+files=["res://TQ/Assets/Items/ItemSheetA.Item Decription.translation", "res://TQ/Assets/Items/ItemSheetA.Fault.translation", "res://TQ/Assets/Items/ItemSheetA.Item_ID.translation"]
 
 source_file="res://TQ/Assets/Items/ItemSheetA.csv"
-dest_files=["res://TQ/Assets/Items/ItemSheetA.Item Decription.translation"]
+dest_files=["res://TQ/Assets/Items/ItemSheetA.Item Decription.translation", "res://TQ/Assets/Items/ItemSheetA.Fault.translation", "res://TQ/Assets/Items/ItemSheetA.Item_ID.translation"]
 
 [params]
 

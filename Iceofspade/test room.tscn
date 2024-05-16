@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw4hp64ipmo0y"]
+
+[ext_resource type="Script" path="res://Iceofspade/csv_reader.gd" id="1_8y7rp"]
+
+[node name="TestRoom" type="Node2D"]
+script = ExtResource("1_8y7rp")
